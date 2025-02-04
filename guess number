@@ -1,0 +1,44 @@
+import random
+
+def guess_number(attempts):
+
+    number = random.randint(1, 100)
+    print(f'У вас {attempts} попыток')
+    
+    for attempt in range(1, attempts + 1):
+        player = int(input('Ваше число: '))
+        if player < number:
+            print('Неверно, больше')
+        elif player > number:
+            print('Неверно, меньше')
+        else:
+            print(f'Поздравляю, вы угадали число {number} за {attempt} попыток!')
+            print('Хотите сыграть ещё? 1 - Да, 2 - Нет')
+            con_game = int(input())
+            if con_game == 1:
+                guess_number(modes[difficulty])
+            return
+            
+    print(f'Вы проиграли. Я загадал число {number}')
+    print('Хотите сыграть ещё? 1 - Да, 2 - Нет')
+    con_game = int(input())
+    if con_game == 1:
+        guess_number(modes[difficulty])
+        return
+
+print('Игра "Угадай число"')
+print('Я загадал число от 1 до 100, попробуйте угадать его')
+print('Выберите режим сложности:\n1: Легкий - 20 попыток\n2: Средний - 10 попыток\n3: Сложный - 5 попыток\n4: Хардкор - 3 попытки')
+
+difficulty = int(input())
+
+modes = {1: 20, 2: 10, 3: 5, 4: 3}
+if difficulty in modes:
+    
+    guess_number(modes[difficulty])
+else:
+    print('Некорректный выбор сложности')
+
+
+
+con_game = input("Нажмите Enter, чтобы выйти")
